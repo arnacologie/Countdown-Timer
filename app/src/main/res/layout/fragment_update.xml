@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".ui.fragments.UpdateFragment">
+
+    <Button
+        android:id="@+id/btnUpdatePickTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Régler l'heure"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvUpdateTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvUpdateTime" />
+
+    <TextView
+        android:id="@+id/tvUpdateDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:hint="@string/selected_date"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdatePickDate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilUpdateEventName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUpdateEventName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnUpdatePickDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUpdateEventName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:hint="@string/event_name"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnUpdateStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Mettre à jour"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdatePickTime" />
+
+    <Button
+        android:id="@+id/btnUpdatePickDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Régler la date"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvUpdateDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvUpdateTime" />
+
+    <TextView
+        android:id="@+id/tvUpdateTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:textSize="18sp"
+        android:hint="Selected Time"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdatePickTime"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpdateDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

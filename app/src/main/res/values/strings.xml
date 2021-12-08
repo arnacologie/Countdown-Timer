@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Countdown Timer</string>
-    <string name="start">START</string>
-    <string name="event_name">Event Name</string>
+    <string name="start">Sauvegarder</string>
+    <string name="event_name">Nom de l\'évènement</string>
     <string name="event_date">Event Date</string>
     <string name="pick_date">Pick Date</string>
     <string name="selected_date">Selected Date</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_an_event">Add an event</string>
 </resources>
