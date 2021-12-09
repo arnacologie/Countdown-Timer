@@ -6,7 +6,7 @@ import io.objectbox.annotation.Id
 @Entity
 data class Event (
     @Id
-    var id: Long = 0,
+    var id: Long = 0L,
     val title: String = "",
     val timestamp: Long = 0L
 )

@@ -18,20 +18,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         setupActionBarWithNavController(findNavController(R.id.fragmentContainerView))
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    fun test(){
-        val date = Date(2020-1900, 4, 26, 0, 0, 0)
-        val timestamp = Timestamp(date.time)
-        println(timestamp.time)
     }
 
 

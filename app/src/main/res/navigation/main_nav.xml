@@ -3,39 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/listFragment">
-
+    app:startDestination="@id/eventsFragment">
     <fragment
-        android:id="@+id/addEventFragment"
-        android:name="com.petite_semence.countdowntimer.ui.fragments.AddEventFragment"
-        android:label="Ajouter un évènement"
-        tools:layout="@layout/fragment_add_event" >
+        android:id="@+id/eventsFragment"
+        android:name="com.petite_semence.countdowntimer.feature_event.presentation.events.EventsFragment"
+        android:label="Vos évènements" >
         <action
-            android:id="@+id/action_addEventFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            android:id="@+id/action_eventsFragment_to_addEditEventFragment"
+            app:destination="@id/addEditEventFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.petite_semence.countdowntimer.ui.fragments.ListFragment"
-        android:label="Évènements à venir"
-        tools:layout="@layout/fragment_list" >
-        <action
-            android:id="@+id/action_listFragment_to_addEventFragment"
-            app:destination="@id/addEventFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateFragment"
-        android:name="com.petite_semence.countdowntimer.ui.fragments.UpdateFragment"
-        android:label="Update"
-        tools:layout="@layout/fragment_update" >
-        <action
-            android:id="@+id/action_updateFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+        android:id="@+id/addEditEventFragment"
+        android:name="com.petite_semence.countdowntimer.feature_event.presentation.add_edit_event.AddEditEventFragment"
+        android:label="" >
         <argument
-            android:name="currentEvent"
-            app:argType="com.petite_semence.countdowntimer.data.entities.Event" />
+            android:name="eventId"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
 </navigation>

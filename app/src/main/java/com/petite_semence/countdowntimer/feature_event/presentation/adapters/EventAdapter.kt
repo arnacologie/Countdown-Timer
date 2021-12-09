@@ -1,16 +1,15 @@
-package com.petite_semence.countdowntimer.adapters
+package com.petite_semence.countdowntimer.feature_event.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.petite_semence.countdowntimer.data.entities.Event
 import com.petite_semence.countdowntimer.databinding.CustomRowBinding
-import com.petite_semence.countdowntimer.ui.fragments.ListFragmentDirections
-import java.sql.Date
-import java.text.SimpleDateFormat
+import com.petite_semence.countdowntimer.feature_event.domain.model.Event
+import com.petite_semence.countdowntimer.feature_event.domain.util.DateFormatUtil
+import com.petite_semence.countdowntimer.feature_event.presentation.events.EventsFragmentDirections
 
-class ListAdapter :RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
+class EventAdapter :RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
 
     private var eventList = emptyList<Event>()
 
@@ -26,13 +25,10 @@ class ListAdapter :RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = eventList[position]
         with(holder){
-            binding.tvEventName.text = currentItem.name
-            val date =  Date(currentItem.date)
-            val format = SimpleDateFormat("dd/MM/yyyy HH:mm")
-            val formattedDate = format.format(date)
-            binding.tvDate.text = formattedDate
+            binding.tvEventName.text = currentItem.title
+            binding.tvDate.text = DateFormatUtil.timestampToString(currentItem.timestamp)
             binding.rowLayout.setOnClickListener { view ->
-                val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+                val action = EventsFragmentDirections.actionEventsFragmentToAddEditEventFragment(eventId = currentItem.id)
                 view.findNavController().navigate(action)
             }
         }

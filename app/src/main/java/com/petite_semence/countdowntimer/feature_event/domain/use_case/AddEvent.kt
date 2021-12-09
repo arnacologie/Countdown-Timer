@@ -8,9 +8,9 @@ class AddEvent(
     private val repository: EventRepository
 ){
     @Throws(InvalidEventException::class)
-    suspend fun invoke(event: Event){
+    suspend operator fun invoke(event: Event){
         if(event.title.isBlank()){
-            throw InvalidEventException("Le titre ne peut pas être vide")
+            throw InvalidEventException("Le titre ne peut être vide")
         }
         repository.insertEvent(event)
     }

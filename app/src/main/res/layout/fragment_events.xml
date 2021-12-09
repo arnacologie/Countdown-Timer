@@ -5,10 +5,10 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ListFragment">
+    tools:context=".feature_event.presentation.events.EventsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvEventList"
+        android:id="@+id/rvEvents"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
