@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.petite_semence.countdowntimer.R
 import com.petite_semence.countdowntimer.databinding.FragmentEventsBinding
 import com.petite_semence.countdowntimer.feature_event.presentation.adapters.EventAdapter
@@ -35,6 +36,12 @@ class EventsFragment : Fragment() {
 
         //RecyclerView
         val eventAdapter = EventAdapter()
+        eventAdapter.setOnLongClickListener { event ->
+            viewModel.onEvent(EventsEvent.DeleteEvent(event))
+            Snackbar.make(binding.root, "Évènement supprimé", Snackbar.LENGTH_LONG)
+                .setAction("Annuler") { viewModel.onEvent(EventsEvent.RestoreNote) }
+                .show()
+        }
         val recyclerView = binding.rvEvents
         recyclerView.apply {
             adapter = eventAdapter

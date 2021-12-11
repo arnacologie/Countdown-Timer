@@ -23,15 +23,29 @@ class EventAdapter :RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = eventList[position]
+        val currentEvent = eventList[position]
         with(holder){
-            binding.tvEventName.text = currentItem.title
-            binding.tvDate.text = DateFormatUtil.timestampToString(currentItem.timestamp)
+            binding.tvEventName.text = currentEvent.title
+            binding.tvDate.text = DateFormatUtil.timestampToString(currentEvent.timestamp)
             binding.rowLayout.setOnClickListener { view ->
-                val action = EventsFragmentDirections.actionEventsFragmentToAddEditEventFragment(eventId = currentItem.id)
+                val action = EventsFragmentDirections.actionEventsFragmentToAddEditEventFragment(
+                    eventId = currentEvent.id
+                )
                 view.findNavController().navigate(action)
             }
+            binding.rowLayout.setOnLongClickListener {
+                onLongClickListener?.let { click ->
+                    click(currentEvent)
+                }
+                return@setOnLongClickListener true
+            }
         }
+    }
+
+    private var onLongClickListener: ((Event) -> Unit)? = null
+
+    fun setOnLongClickListener(listener: ((Event) -> Unit)){
+        onLongClickListener = listener
     }
 
     fun setData(eventList : List<Event>){
